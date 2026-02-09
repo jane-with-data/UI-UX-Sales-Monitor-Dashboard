@@ -11,7 +11,7 @@ This dataset is the sales data of a retail business with full orders as usual.
 - **PDF Format:** You can check it out Dashboard in PDF format at:
 
     - Path: `./UI-UX-Sales-Monitor-Dashboard-PDF.pdf`
-    - Link: ``
+    - Link: `https://github.com/jane-with-data/UI-UX-Sales-Monitor-Dashboard/blob/main/UI-UX-Sales-Monitor-Dashboard-PDF.pdf`
 - **Live Dashboard:** You can view the dashboard directly on PBI Service at:
 `https://app.powerbi.com/view?r=eyJrIjoiNDAxYWI0NDEtODM4OC00NWI2LWIwMmEtNTlkZjY5NWQ4M2M4IiwidCI6IjZhYzJhZDA2LTY5MmMtNDY2My1iN2FmLWE5ZmYyYTg2NmQwYyIsImMiOjEwfQ%3D%3D`
 
