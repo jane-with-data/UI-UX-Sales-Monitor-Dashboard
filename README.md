@@ -29,7 +29,7 @@ If you are interested in the analysis, I have an analysis of "Boost Sales For Pi
 
 ```
 ├── README.md          <- About project & Guide to run
-├── data               <- The original, immutable data dump, icon.
+├── data               <- The original, immutable data dump
 ├── src                <- .pbip file
 ```
 ---
