@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "34a675465cb068f98c17",
+  "position": {
+    "x": 250.00000000000003,
+    "y": 96.153846153846132,
+    "z": 3000,
+    "height": 847.75488400488393,
+    "width": 1190,
+    "tabOrder": 1000
+  },
+  "visualGroup": {
+    "displayName": "Chart Profit",
+    "groupMode": "ScaleMode"
+  },
+  "isHidden": true
+}

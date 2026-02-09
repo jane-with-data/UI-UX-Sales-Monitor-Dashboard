@@ -1,0 +1,25 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Orders","_Measures","_test","Metrics","Metrics Slicer"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Orders
+ref table DateTableTemplate_fc3995ab-cbc9-4dde-97d8-13efe0c49f07
+ref table LocalDateTable_66c03a56-a9cc-4efb-a37d-8c41cd125830
+ref table Calendar
+ref table _Measures
+ref table LocalDateTable_aa956864-4823-4216-8c5a-4cfdf57a37c9
+ref table _test
+ref table 'Metrics Slicer'
+
+ref cultureInfo en-US
+

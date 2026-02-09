@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "ada6a2b1de765edf95ab",
+  "position": {
+    "x": 250,
+    "y": 96.153846153846132,
+    "z": 4000,
+    "height": 848.01280859189137,
+    "width": 1190,
+    "tabOrder": 9000
+  },
+  "visualGroup": {
+    "displayName": "Chart Sales",
+    "groupMode": "ScaleMode"
+  }
+}

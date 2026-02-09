@@ -1,0 +1,182 @@
+table _Measures
+	lineageTag: ff797435-f40b-4b27-9705-f08f16642cc3
+
+	measure ImageFinal =
+			
+			VAR selected_person = SELECTEDVALUE( Orders[Person])
+			RETURN
+			    IF(
+			        ISBLANK(selected_person),
+			        "https://i.ibb.co/jvdBW259/Default-pfp-svg.png",
+			        MAX(Orders[ImageUrl])
+			    )
+		lineageTag: f73e6137-25e4-492c-8e45-3574a91748da
+		dataCategory: ImageUrl
+
+	measure 'Total Sales' = SUM(Orders[Sales])
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: e5606069-2390-4ecd-9088-70534a975cf5
+
+	measure 'Previous Sales' =
+			CALCULATE(
+			    [Total Sales],
+			    DATEADD('Calendar'[Order Month], -1, MONTH)
+			)
+		lineageTag: 63e5c052-846b-4a27-b0c1-fd56a24fed6c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% change sales' =
+			
+			VAR _change = DIVIDE([Total Sales] - [Previous Sales], [Previous Sales])
+			RETURN
+			    SWITCH(TRUE(),
+			        _change > 0, "↑ " & FORMAT(_change, "0.0" &  "%"),
+			        _change < 0, "↓ " & FORMAT(_change, "0.0" &  "%"),
+			        _change = 0, "-"
+			    )
+		lineageTag: d7cc363e-1de9-442e-89a1-21a203e24cd6
+
+	measure 'Total Profit' = SUM(Orders[Profit])
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 12e33f35-8188-4c01-b992-60a320000c7a
+
+	measure 'Previous Profit' =
+			CALCULATE(
+			    [Total Profit],
+			    DATEADD('Calendar'[Order Month], -1, MONTH)
+			)
+		lineageTag: d3aa30a5-8d71-4454-9db7-67a177ff6a78
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% change profit' =
+			
+			VAR _change = DIVIDE([Total Profit] - [Previous Profit], [Previous Profit])
+			RETURN
+			    SWITCH(TRUE(),
+			        _change > 0, "↑ " & FORMAT(_change, "0.0" &  "%"),
+			        _change < 0, "↓ " & FORMAT(_change, "0.0" &  "%"),
+			        _change = 0, "-"
+			    )
+		lineageTag: 000e1bb7-2b0a-43da-9d20-8014fdc87196
+
+	measure 'Total Orders' = DISTINCTCOUNT(Orders[Order ID])
+		formatString: #,0
+		lineageTag: 62ae885f-c317-43a5-99a4-a01a08341228
+
+	measure 'Previous Orders' =
+			CALCULATE(
+			    [Total Orders],
+			    DATEADD('Calendar'[Order Month], -1, MONTH)
+			)
+		formatString: 0
+		lineageTag: 4f69a3dc-8c90-472a-b2c4-f2678ed98ac2
+
+	measure '% change orders' =
+			
+			VAR _change = DIVIDE([Total Orders] - [Previous Orders], [Previous Orders])
+			RETURN
+			    SWITCH(TRUE(),
+			        _change > 0, "↑ " & FORMAT(_change, "0.0" &  "%"),
+			        _change < 0, "↓ " & FORMAT(_change, "0.0" &  "%"),
+			        _change = 0, "-"
+			    )
+		lineageTag: 2d6161af-defb-4ff0-ab00-d5dae2d50b9f
+
+	measure 'Gross Margin' = DIVIDE([Total Profit], [Total Sales])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 90ae4707-9314-4e79-bd06-a350df476523
+
+	measure '% change gm' = ```
+			
+			VAR _change = DIVIDE([Gross Margin] - [Previous Gross Margin], [Previous Gross Margin])
+			RETURN
+			    SWITCH(TRUE(),
+			        _change > 0, "↑ " & FORMAT(_change, "0.0" &  "%"),
+			        _change < 0, "↓ " & FORMAT(_change, "0.0" & "%"),
+			        _change = 0, "-" 
+			    )
+			```
+		lineageTag: 3254a8f8-aae4-457f-b769-3c0b79ebc1ff
+
+	measure 'Previous Gross Margin' = ```
+			
+			    CALCULATE(
+			        [Gross Margin],
+			        DATEADD('Calendar'[Order Month], -1, MONTH)
+			    )
+			```
+		lineageTag: df0ce056-a91b-42df-ac40-9d9936b36b1e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'All Sales' =
+			CALCULATE(
+			    [Total Sales],
+			    REMOVEFILTERS('Calendar'[Order Month])
+			)
+		lineageTag: ab693e02-1162-4d52-926a-50fed6143432
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Max Sales' =
+			CALCULATE(
+			    MAXX(
+			        ALLSELECTED(Orders[Order Month]),
+			        [All Sales]
+			    )
+			) * 1.3
+		lineageTag: 4dfcbffc-60e5-49b8-be3c-8727f98cb91a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Max Profit' =
+			CALCULATE(
+			    MAXX(
+			        ALLSELECTED(Orders[Order Month]),
+			        [All Profit]
+			    )
+			) * 1.3
+		lineageTag: 74c514e4-0289-49a1-9fad-e1f6907f27dd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'All Profit' =
+			CALCULATE(
+			    [Total Profit],
+			    REMOVEFILTERS('Calendar'[Order Month])
+			)
+		lineageTag: fd8fe6e4-3d7d-4085-ae7f-1a245dc08c39
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Max Orders' =
+			CALCULATE(
+			    MAXX(
+			        ALLSELECTED(Orders[Order Month]),
+			        [All Orders]
+			    )
+			) * 1.3
+		lineageTag: 15e5d805-9aef-480c-8d86-a0dbded14208
+
+	measure 'All Orders' =
+			CALCULATE(
+			    [Total Orders],
+			    REMOVEFILTERS('Calendar'[Order Month])
+			)
+		formatString: 0
+		lineageTag: 223770bc-1514-4621-a87d-a2a353929724
+
+	partition _Measures = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

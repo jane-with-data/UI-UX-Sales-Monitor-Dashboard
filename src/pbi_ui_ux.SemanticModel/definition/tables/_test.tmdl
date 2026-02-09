@@ -1,0 +1,80 @@
+table _test
+	lineageTag: 674f6908-f9a9-4782-a498-a0b52ff77d65
+
+	measure '_Total Sales' = SUM(Orders[Sales])
+		formatString: #,0
+		lineageTag: 810ad813-2b51-4ff4-af42-322e2f11efe2
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure _calculate_consumer =
+			CALCULATE(
+			    [_Total Sales],
+			    Orders[Segment] = "Consumer"
+			)
+		formatString: #,0
+		lineageTag: 422470e2-a254-4b53-b63d-b49161e4f52b
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure _calculate_january_2014 =
+			CALCULATE(
+			    [_Total Sales],
+			    Orders[Order Month] = DATE(2014,01,01)
+			)
+		formatString: #,0
+		lineageTag: cbd515c2-9f19-47c4-b420-6c02fb06e45d
+
+	measure _calculte_keep_filters_april_2014 =
+			CALCULATE(
+			    [_Total Sales],
+			    KEEPFILTERS(Orders[Order Month] = DATE(2014,04,01)
+			))
+		lineageTag: a88fb5ce-2144-4948-ba27-c51e4b52e3fe
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure _calcuate_filter_2014_april =
+			CALCULATE(
+			    [_Total Sales],
+			    FILTER(
+			))
+		lineageTag: 062b13a7-68df-44e3-9c73-5193b6740985
+
+	measure 'Average Sales' = AVERAGE(Orders[Sales])
+		lineageTag: af3ad317-a276-499d-ac7d-d9ab0d8fb419
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Above Average Sales' =
+			CALCULATE(
+			    [_Total Sales],
+			    FILTER(
+			        Orders,
+			        Orders[Sales] > [Average Sales]
+			    )
+			
+			)
+		lineageTag: 53f055db-d71a-41b1-8a67-aa7021871694
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Column1
+		dataType: string
+		lineageTag: 4e8b3d92-c948-4bd6-9675-ccd5e55c836b
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _test = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

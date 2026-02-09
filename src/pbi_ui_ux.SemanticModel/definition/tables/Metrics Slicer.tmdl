@@ -1,0 +1,37 @@
+table 'Metrics Slicer'
+	lineageTag: ea14a169-fe56-422b-94f3-d012411ce18a
+
+	measure 'Metric Value' =
+			
+			VAR selected_metric = SELECTEDVALUE('Metrics Slicer'[MetricName])
+			RETURN
+			    SWITCH(selected_metric,
+			        "Total Sales", [Total Sales],
+			        "Total Profit", [Total Profit],
+			        "Total Order", [Total Orders]
+			    )
+		lineageTag: 0f3eea08-78d2-4805-8953-28f6f1d2a366
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MetricName
+		dataType: string
+		lineageTag: c1e8bfe2-3d78-4463-b683-0af4ed848274
+		summarizeBy: none
+		sourceColumn: MetricName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Metrics Slicer' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WCskvScxRCE7MSS1WitWB8QOK8tMyS5AE/ItSUouUYmMB", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [MetricName = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"MetricName", type text}})
+				in
+				    #"Changed Type"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

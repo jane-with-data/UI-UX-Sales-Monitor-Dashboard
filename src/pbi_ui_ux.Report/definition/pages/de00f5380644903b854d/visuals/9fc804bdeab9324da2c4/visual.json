@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "9fc804bdeab9324da2c4",
+  "position": {
+    "x": 541.90476190476193,
+    "y": 94.722210301293188,
+    "z": 7000,
+    "height": 167.85714285714289,
+    "width": 266.42857142857144,
+    "tabOrder": 2000
+  },
+  "visualGroup": {
+    "displayName": "CARD Profit",
+    "groupMode": "ScaleMode"
+  }
+}

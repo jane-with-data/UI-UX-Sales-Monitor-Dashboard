@@ -1,0 +1,234 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.1.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY25SU12",
+      "reportVersionAtImport": {
+        "visual": "2.5.0",
+        "report": "3.1.0",
+        "page": "2.3.0"
+      },
+      "type": "SharedResources"
+    }
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY25SU12",
+          "path": "BaseThemes/CY25SU12.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "home027297250395423522.png",
+          "path": "home027297250395423522.png",
+          "type": "Image"
+        },
+        {
+          "name": "report23351648117244428.png",
+          "path": "report23351648117244428.png",
+          "type": "Image"
+        },
+        {
+          "name": "help3963910222830347.png",
+          "path": "help3963910222830347.png",
+          "type": "Image"
+        },
+        {
+          "name": "home-gray3235666998435176.png",
+          "path": "home-gray3235666998435176.png",
+          "type": "Image"
+        },
+        {
+          "name": "home-black6859850450957651.png",
+          "path": "home-black6859850450957651.png",
+          "type": "Image"
+        },
+        {
+          "name": "dashboard-gray8854345001605044.png",
+          "path": "dashboard-gray8854345001605044.png",
+          "type": "Image"
+        },
+        {
+          "name": "dashboard-black32012941777340986.png",
+          "path": "dashboard-black32012941777340986.png",
+          "type": "Image"
+        },
+        {
+          "name": "dot-gray09627876515512912.png",
+          "path": "dot-gray09627876515512912.png",
+          "type": "Image"
+        },
+        {
+          "name": "dot-black6543230566436733.png",
+          "path": "dot-black6543230566436733.png",
+          "type": "Image"
+        },
+        {
+          "name": "card616705732563627.png",
+          "path": "card616705732563627.png",
+          "type": "Image"
+        },
+        {
+          "name": "Profit2548993767551979.png",
+          "path": "Profit2548993767551979.png",
+          "type": "Image"
+        },
+        {
+          "name": "NoOrder4356671659058121.png",
+          "path": "NoOrder4356671659058121.png",
+          "type": "Image"
+        },
+        {
+          "name": "GrossMargin9305077807625991.png",
+          "path": "GrossMargin9305077807625991.png",
+          "type": "Image"
+        },
+        {
+          "name": "Sales9717199392554224.png",
+          "path": "Sales9717199392554224.png",
+          "type": "Image"
+        },
+        {
+          "name": "Logo4239881824435503.png",
+          "path": "Logo4239881824435503.png",
+          "type": "Image"
+        },
+        {
+          "name": "card08851402233989569.png",
+          "path": "card08851402233989569.png",
+          "type": "Image"
+        },
+        {
+          "name": "dot-white43410501924854183.png",
+          "path": "dot-white43410501924854183.png",
+          "type": "Image"
+        },
+        {
+          "name": "dot-white6844655111430273.png",
+          "path": "dot-white6844655111430273.png",
+          "type": "Image"
+        },
+        {
+          "name": "dot-white4718833515981099.png",
+          "path": "dot-white4718833515981099.png",
+          "type": "Image"
+        },
+        {
+          "name": "dot-white47548277195947386.png",
+          "path": "dot-white47548277195947386.png",
+          "type": "Image"
+        },
+        {
+          "name": "dot-white39387142457309554.png",
+          "path": "dot-white39387142457309554.png",
+          "type": "Image"
+        },
+        {
+          "name": "Logo7758584453185379.png",
+          "path": "Logo7758584453185379.png",
+          "type": "Image"
+        },
+        {
+          "name": "logo_linkedin_default37447369908571315.png",
+          "path": "logo_linkedin_default37447369908571315.png",
+          "type": "Image"
+        },
+        {
+          "name": "logo_linkedin_active775983120396433.png",
+          "path": "logo_linkedin_active775983120396433.png",
+          "type": "Image"
+        },
+        {
+          "name": "logo_github_default3576437738681767.png",
+          "path": "logo_github_default3576437738681767.png",
+          "type": "Image"
+        },
+        {
+          "name": "logo_github_active8036769196402773.png",
+          "path": "logo_github_active8036769196402773.png",
+          "type": "Image"
+        },
+        {
+          "name": "Dashboard_-_OV1968951632546848.gif",
+          "path": "Dashboard_-_OV1968951632546848.gif",
+          "type": "Image"
+        },
+        {
+          "name": "Dashboard_-_OV4765995453974309.gif",
+          "path": "Dashboard_-_OV4765995453974309.gif",
+          "type": "Image"
+        },
+        {
+          "name": "Navigation3529586615035588.gif",
+          "path": "Navigation3529586615035588.gif",
+          "type": "Image"
+        },
+        {
+          "name": "How_to_use6391123717096848.gif",
+          "path": "How_to_use6391123717096848.gif",
+          "type": "Image"
+        },
+        {
+          "name": "dashboard-black10746774335748988.png",
+          "path": "dashboard-black10746774335748988.png",
+          "type": "Image"
+        },
+        {
+          "name": "dashboard-black8532121870311536.png",
+          "path": "dashboard-black8532121870311536.png",
+          "type": "Image"
+        },
+        {
+          "name": "dashboard-black9700787035914522.png",
+          "path": "dashboard-black9700787035914522.png",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true
+  }
+}

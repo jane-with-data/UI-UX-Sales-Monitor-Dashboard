@@ -1,0 +1,14 @@
+relationship db7e96f5-7c99-4a18-b51c-79163383fc47
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Orders.'Order Date'
+	toColumn: LocalDateTable_66c03a56-a9cc-4efb-a37d-8c41cd125830.Date
+
+relationship cfa56f87-5092-49bd-b355-a6f2eb8c34f5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendar.'Order Month'
+	toColumn: LocalDateTable_aa956864-4823-4216-8c5a-4cfdf57a37c9.Date
+
+relationship fd85c994-6d4e-393b-4259-2382f5ea7d02
+	fromColumn: Orders.'Order Month'
+	toColumn: Calendar.'Order Month'
+

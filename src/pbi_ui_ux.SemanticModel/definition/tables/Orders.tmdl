@@ -1,0 +1,189 @@
+table Orders
+	lineageTag: 869ce6c7-af30-4103-acb3-9d7537ba4af7
+
+	column 'Order ID'
+		dataType: string
+		lineageTag: bc7ee328-4955-4c96-b588-bc3842455199
+		summarizeBy: none
+		sourceColumn: Order ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5290c16b-20c7-435b-b5ac-3e609c7a6afc
+		summarizeBy: none
+		sourceColumn: Order Date
+
+		variation Variation
+			isDefault
+			relationship: db7e96f5-7c99-4a18-b51c-79163383fc47
+			defaultHierarchy: LocalDateTable_66c03a56-a9cc-4efb-a37d-8c41cd125830.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Order Month'
+		dataType: dateTime
+		formatString: mmmm yyyy
+		lineageTag: 1b4bf0e4-c121-4c0f-ae90-162ca6f77ee2
+		summarizeBy: none
+		sourceColumn: Order Month
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Segment
+		dataType: string
+		lineageTag: f9778a6b-c7cd-479b-918e-68b74cb80d5e
+		summarizeBy: none
+		sourceColumn: Segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: d656842d-6571-4fcd-a1e7-30e89a1d9c5c
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		lineageTag: e89b178c-d935-490d-887e-78a32f123be0
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: bce8e781-fb44-4516-ad23-20fb74ccc1d8
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: 94c773f2-6eda-4c28-a889-25539fef0ab0
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column Market
+		dataType: string
+		lineageTag: 2320eb9c-9b1e-4f23-ae5c-4dac41e6f954
+		summarizeBy: none
+		sourceColumn: Market
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product ID'
+		dataType: string
+		lineageTag: 8f3b6088-40b5-4c35-b596-91c46b1c7bd7
+		summarizeBy: none
+		sourceColumn: Product ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Name'
+		dataType: string
+		lineageTag: be5aa273-9bdb-4937-9774-8e6c2453c98a
+		summarizeBy: none
+		sourceColumn: Product Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 90b6a6ff-17ab-4535-9f24-80f76b8f9afd
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sub-Category
+		dataType: string
+		lineageTag: 99c6f132-c778-4226-81b9-d6f2569557cf
+		summarizeBy: none
+		sourceColumn: Sub-Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales
+		dataType: double
+		lineageTag: 9b6d892a-2636-41c1-b477-144f6cb4ff8a
+		summarizeBy: sum
+		sourceColumn: Sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 4dbfb58b-59fa-42d8-81f1-23e19810ff7d
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Discount
+		dataType: double
+		lineageTag: d2a0ad1c-3b8b-4720-bf09-1aa342fa9862
+		summarizeBy: sum
+		sourceColumn: Discount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Profit
+		dataType: double
+		lineageTag: 9fb8f4b2-1b46-4a3e-b7fc-d1dec462243b
+		summarizeBy: sum
+		sourceColumn: Profit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Person
+		dataType: string
+		lineageTag: 30fb46e6-7721-4e46-93be-015f846f568c
+		summarizeBy: none
+		sourceColumn: Person
+
+		annotation SummarizationSetBy = Automatic
+
+	column ImageUrl
+		dataType: string
+		lineageTag: 7d71b01e-6db2-4cb8-8349-9f11f8cec562
+		dataCategory: ImageUrl
+		summarizeBy: none
+		sourceColumn: ImageUrl
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Orders = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\nganw\Downloads\PBI_UI_UX\data\orders.xlsx"), null, true),
+				    Orders_Sheet = Source{[Item="Orders",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Orders_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Order ID", type text}, {"Order Date", type date}, {"Order Month", type date}, {"Segment", type text}, {"City", type text}, {"State", type text}, {"Country", type text}, {"Region", type text}, {"Market", type text}, {"Product ID", type text}, {"Product Name", type text}, {"Category", type text}, {"Sub-Category", type text}, {"Sales", type number}, {"Quantity", Int64.Type}, {"Discount", type number}, {"Profit", type number}, {"Person", type text}, {"ImageUrl", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

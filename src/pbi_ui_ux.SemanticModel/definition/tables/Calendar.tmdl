@@ -1,0 +1,40 @@
+table Calendar
+	lineageTag: 2bef065c-1578-46b3-bf37-184438135400
+
+	column 'Order Month'
+		formatString: mmmm yyyy
+		lineageTag: bc2efe0f-3628-4eef-a437-bcfcee9281cb
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Orders[Order Month]
+
+		variation Variation
+			isDefault
+			relationship: cfa56f87-5092-49bd-b355-a6f2eb8c34f5
+			defaultHierarchy: LocalDateTable_aa956864-4823-4216-8c5a-4cfdf57a37c9.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Year
+		formatString: 0
+		lineageTag: 8617c983-ee9d-4634-b0ce-ba4c31483e25
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = User
+
+	partition Calendar = calculated
+		mode: import
+		source =
+				ADDCOLUMNS(
+				    DISTINCT(Orders[Order Month]),
+				    "Year", YEAR(Orders[Order Month])
+				)
+
+	annotation PBI_Id = e8ef5e3480a64bee83349790e93649c9
+
